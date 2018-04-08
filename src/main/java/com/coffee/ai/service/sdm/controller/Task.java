@@ -34,13 +34,13 @@ public class Task {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public void add(@ModelAttribute("mo") final TaskMo mo) {
+	public void add(@ModelAttribute final TaskMo mo) {
 		System.out.println(mo);
 		svc.add(mo);
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public void update(final TaskMo mo) {
+	public void update(@ModelAttribute final TaskMo mo) {
 		svc.update(mo);
 	}
 }

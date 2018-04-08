@@ -90,7 +90,7 @@ public class TaskDao {
 
 	public void update(final TaskMo mo) {
 		final StringBuffer sql = new StringBuffer();
-		sql.append("UPDATE t_tasks set");
+		sql.append("UPDATE t_tasks set ");
 		sql.append("name=?,description=?,developer=?,status=?,codesNum=?");
 		sql.append(",planedStartDate=?,planedFinishDate=?,actualStartDate=?,actualFinishDate=?");
 		sql.append(" WHERE ");
