@@ -35,7 +35,6 @@ public class Task {
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public void add(@ModelAttribute final TaskMo mo) {
-		System.out.println(mo);
 		svc.add(mo);
 	}
 
