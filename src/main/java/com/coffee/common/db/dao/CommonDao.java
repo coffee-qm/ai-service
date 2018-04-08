@@ -36,4 +36,13 @@ public class CommonDao<T> {
 	public void update(final String sql, final Object[] objects) {
 		jdbcTemplate.update(sql, objects);
 	}
+
+	public void delete(final String table, final long id) {
+		this.delete(table, "id", id);
+	}
+
+	public void delete(final String table, final String col, final long id) {
+		jdbcTemplate.update("delete from " + table + " where " + col + "=?", new Object[] { id },
+				new int[] { java.sql.Types.BIGINT });
+	}
 }

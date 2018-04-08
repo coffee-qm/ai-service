@@ -23,6 +23,7 @@ public class TaskMo implements Serializable {
 	private long planedFinishTime;
 	private long actualStartTime;
 	private long actualFinishTime;
+	private String userIp;
 	private List<Long> preTasks = new ArrayList<>();
 	private List<Long> nxtTasks = new ArrayList<>();
 
@@ -137,6 +138,14 @@ public class TaskMo implements Serializable {
 
 	public void setActualFinishTime(final long actualFinishTime) {
 		this.actualFinishTime = actualFinishTime;
+	}
+
+	public String getUserIp() {
+		return userIp;
+	}
+
+	public void setUserIp(final String userIp) {
+		this.userIp = userIp;
 	}
 
 	public List<Long> getPreTasks() {
