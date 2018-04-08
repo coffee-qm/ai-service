@@ -3,6 +3,7 @@ package com.coffee.ai.service.sdm.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +32,7 @@ public class TaskDao {
 		final StringBuffer sql = new StringBuffer();
 		sql.append("SELECT ");
 		sql.append("id,name,description,developer,status,codesNum");
-		sql.append(",planedStartDate,planedFinishDate,actualStartDate,actualFinishDate");
+		sql.append(",planedStartTime,planedFinishTime,actualStartTime,actualFinishTime");
 		sql.append(" FROM t_tasks");
 		final List<Map<String, Object>> lst = dao.query(sql.toString(), new Object[] {});
 		final List<TaskMo> data = new ArrayList<>();
@@ -50,7 +51,7 @@ public class TaskDao {
 		final StringBuffer sql = new StringBuffer();
 		sql.append("SELECT ");
 		sql.append("name,description,developer,status,codesNum");
-		sql.append(",planedStartDate,planedFinishDate,actualStartDate,actualFinishDate");
+		sql.append(",planedStartTime,planedFinishTime,actualStartTime,actualFinishTime");
 		sql.append(" FROM t_tasks WHERE id=?");
 		// 
 		return dao.load(sql.toString(), new Object[] { id }, new ResultSetExtractor<TaskMo>() {
@@ -63,10 +64,10 @@ public class TaskDao {
 				mo.setDeveloper(rs.getString("developer"));
 				mo.setStatus(rs.getInt("status"));
 				mo.setCodesNum(rs.getLong("codesNum"));
-				mo.setPlanedStartDate(rs.getDate("planedStartDate"));
-				mo.setPlanedFinishDate(rs.getDate("planedFinishDate"));
-				mo.setActualStartDate(rs.getDate("actualStartDate"));
-				mo.setActualFinishDate(rs.getDate("actualFinishDate"));
+				mo.setPlanedStartTime(rs.getLong("planedStartTime"));
+				mo.setPlanedFinishTime(rs.getLong("planedFinishTime"));
+				mo.setActualStartTime(rs.getLong("actualStartTime"));
+				mo.setActualFinishTime(rs.getLong("actualFinishTime"));
 				return null;
 			}
 		});
@@ -75,31 +76,34 @@ public class TaskDao {
 	public void add(final TaskMo mo) {
 		final StringBuffer sql = new StringBuffer();
 		sql.append("insert into t_tasks(");
-		sql.append("name,description,developer,status,codesNum");
-		sql.append(",planedStartDate,planedFinishDate,actualStartDate,actualFinishDate");
+		sql.append("createTime");
+		sql.append(",name,description,developer,status,codesNum");
+		sql.append(",planedStartTime,planedFinishTime,actualStartTime,actualFinishTime");
 		sql.append(") values (");
-		sql.append("?,?,?,?,?");
+		sql.append(Calendar.getInstance().getTimeInMillis());
+		sql.append(",?,?,?,?,?");
 		sql.append(",?,?,?,?");
 		sql.append(")");
 		dao.update(
 				sql.toString(),
 				new Object[] { mo.getName(), mo.getDescription(), mo.getDeveloper(),
-						mo.getStatus(), mo.getCodesNum(), mo.getPlanedStartDate(),
-						mo.getPlanedFinishDate(), mo.getActualStartDate(), mo.getActualFinishDate() });
+						mo.getStatus(), mo.getCodesNum(), mo.getPlanedStartTime(),
+						mo.getPlanedFinishTime(), mo.getActualStartTime(), mo.getActualFinishTime() });
 	}
 
 	public void update(final TaskMo mo) {
 		final StringBuffer sql = new StringBuffer();
 		sql.append("UPDATE t_tasks set ");
-		sql.append("name=?,description=?,developer=?,status=?,codesNum=?");
-		sql.append(",planedStartDate=?,planedFinishDate=?,actualStartDate=?,actualFinishDate=?");
+		sql.append("updateTime=").append(Calendar.getInstance().getTimeInMillis());
+		sql.append(",name=?,description=?,developer=?,status=?,codesNum=?");
+		sql.append(",planedStartTime=?,planedFinishTime=?,actualStartTime=?,actualFinishTime=?");
 		sql.append(" WHERE ");
 		sql.append(" id=?");
 		dao.update(
 				sql.toString(),
 				new Object[] { mo.getName(), mo.getDescription(), mo.getDeveloper(),
-						mo.getStatus(), mo.getCodesNum(), mo.getPlanedStartDate(),
-						mo.getPlanedFinishDate(), mo.getActualStartDate(),
-						mo.getActualFinishDate(), mo.getId() });
+						mo.getStatus(), mo.getCodesNum(), mo.getPlanedStartTime(),
+						mo.getPlanedFinishTime(), mo.getActualStartTime(),
+						mo.getActualFinishTime(), mo.getId() });
 	}
 }

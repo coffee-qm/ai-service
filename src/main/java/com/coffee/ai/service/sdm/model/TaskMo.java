@@ -2,7 +2,6 @@ package com.coffee.ai.service.sdm.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class TaskMo implements Serializable {
@@ -13,14 +12,17 @@ public class TaskMo implements Serializable {
 
 	private long id;
 	private String name;
+	private String sn;
 	private String description;
 	private String developer;
 	private int status;
 	private long codesNum;
-	private Date planedStartDate;
-	private Date planedFinishDate;
-	private Date actualStartDate;
-	private Date actualFinishDate;
+	private long createTime;
+	private long updateTime;
+	private long planedStartTime;
+	private long planedFinishTime;
+	private long actualStartTime;
+	private long actualFinishTime;
 	private List<Long> preTasks = new ArrayList<>();
 	private List<Long> nxtTasks = new ArrayList<>();
 
@@ -47,6 +49,14 @@ public class TaskMo implements Serializable {
 
 	public void setName(final String name) {
 		this.name = name;
+	}
+
+	public String getSn() {
+		return sn;
+	}
+
+	public void setSn(final String sn) {
+		this.sn = sn;
 	}
 
 	public String getDescription() {
@@ -81,36 +91,52 @@ public class TaskMo implements Serializable {
 		this.codesNum = codesNum;
 	}
 
-	public Date getPlanedStartDate() {
-		return planedStartDate;
+	public long getCreateTime() {
+		return createTime;
 	}
 
-	public void setPlanedStartDate(final Date planedStartDate) {
-		this.planedStartDate = planedStartDate;
+	public void setCreateTime(final long createTime) {
+		this.createTime = createTime;
 	}
 
-	public Date getPlanedFinishDate() {
-		return planedFinishDate;
+	public long getUpdateTime() {
+		return updateTime;
 	}
 
-	public void setPlanedFinishDate(final Date planedFinishDate) {
-		this.planedFinishDate = planedFinishDate;
+	public void setUpdateTime(final long updateTime) {
+		this.updateTime = updateTime;
 	}
 
-	public Date getActualStartDate() {
-		return actualStartDate;
+	public long getPlanedStartTime() {
+		return planedStartTime;
 	}
 
-	public void setActualStartDate(final Date actualStartDate) {
-		this.actualStartDate = actualStartDate;
+	public void setPlanedStartTime(final long planedStartTime) {
+		this.planedStartTime = planedStartTime;
 	}
 
-	public Date getActualFinishDate() {
-		return actualFinishDate;
+	public long getPlanedFinishTime() {
+		return planedFinishTime;
 	}
 
-	public void setActualFinishDate(final Date actualFinishDate) {
-		this.actualFinishDate = actualFinishDate;
+	public void setPlanedFinishTime(final long planedFinishTime) {
+		this.planedFinishTime = planedFinishTime;
+	}
+
+	public long getActualStartTime() {
+		return actualStartTime;
+	}
+
+	public void setActualStartTime(final long actualStartTime) {
+		this.actualStartTime = actualStartTime;
+	}
+
+	public long getActualFinishTime() {
+		return actualFinishTime;
+	}
+
+	public void setActualFinishTime(final long actualFinishTime) {
+		this.actualFinishTime = actualFinishTime;
 	}
 
 	public List<Long> getPreTasks() {
@@ -128,5 +154,4 @@ public class TaskMo implements Serializable {
 	public void setNxtTasks(final List<Long> nxtTasks) {
 		this.nxtTasks = nxtTasks;
 	}
-
 }
