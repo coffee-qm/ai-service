@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.coffee.ai.service.sdm.dao.TaskDao;
 import com.coffee.ai.service.sdm.model.TaskMo;
+import com.coffee.common.audit.service.AuditSvc;
 
 @Service
-public class TaskSvc {
+public class TaskSvc implements AuditSvc {
 
 	@Autowired
 	private TaskDao dao;

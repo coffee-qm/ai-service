@@ -1,28 +1,19 @@
 package com.coffee.ai.service.sdm.model;
 
-import java.io.Serializable;
+import com.coffee.common.base.model.BaseMo;
 
-public class TaskProgressMo implements Serializable {
+public class TaskProgressMo extends BaseMo {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -4551582596819836643L;
 
-	private long id;
 	private long taskId;
 	private int rate;
 	private String description;
 	private long createTime;
 	private long updateTime;
 	private String userIp;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(final long id) {
-		this.id = id;
-	}
 
 	public long getTaskId() {
 		return taskId;

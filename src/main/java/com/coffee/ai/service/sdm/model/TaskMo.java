@@ -1,16 +1,16 @@
 package com.coffee.ai.service.sdm.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskMo implements Serializable {
+import com.coffee.common.base.model.BaseMo;
+
+public class TaskMo extends BaseMo {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2919908881324723439L;
 
-	private long id;
 	private String name;
 	private String sn;
 	private String description;
@@ -34,14 +34,6 @@ public class TaskMo implements Serializable {
 		s.append("name:\"").append(name).append("\"");
 		s.append("}");
 		return name;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(final long id) {
-		this.id = id;
 	}
 
 	public String getName() {
